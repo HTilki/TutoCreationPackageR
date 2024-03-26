@@ -166,6 +166,10 @@ La première ligne est une sorte de titre pour la fonction. La deuxième corresp
 -   `@export` indique que la fonction doit être exportée pour être accessible à partir du package.
 -   Il en existe bien d'autres !
 
+Une fois la documentation bien renseigné, il suffit d'executer la fonction `roxygen2::roxygenise()` ou la fonction `devtools::document()` qui est un wrapper de la fonction issue de `roxygen2`.
+Ces fonctions analysent les commentaires de documentation Roxygen2 présents dans votre code source, situé dans le dossier *R*, et génèrent automatiquement les fichiers de documentation au format Rd (R documentation) dans un dossier *man*. 
+
+
 ### Les tests de fonctions
 
 Avant de rédiger des tests, on peut utiliser les fonctions du package sans les importer dans l'environnement global à l'aide de la fonction `load_all`.
@@ -223,6 +227,8 @@ Dans le dossier R, on a un fichier data.R qui contient :
 "data_nom_voiture"
 
 ```
+
+Une fois la documentation renseignée, on peut à nouveau et de la même manière qu'avec un script de fonction, executer la fonction `devtools::document()` afin de mettre à jour la documentation du package.
 
 ### La description du package
 
