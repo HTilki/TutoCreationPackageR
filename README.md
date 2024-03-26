@@ -24,6 +24,9 @@ Avant de commencer à créer un package, assurez-vous d'avoir installé les pack
 
 -   D'autre packages existent, à vous de les découvrir !
 
+### MonPremierPackage
+Le dossier *MonPremierPackage* a été créé à partir du code présenté ci-dessous et dans le fichier *script.R*. Il s'agit d'un court exemple de ce que l'on peut faire avec les différentes libraries disponibles.  
+
 ## Inititalisation du package
 
 L'initialisation d'un package sur R est une étape cruciale pour commencer un projet de développement. Pour ce faire, on peut utiliser une série de fonctions facilitant la création et la configuration de la structure du package.
