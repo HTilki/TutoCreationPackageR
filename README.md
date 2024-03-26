@@ -188,6 +188,6 @@ Pour l'utiliser ensuite, on peut soit l'importer avec `library('nomdupackage')` 
 
 ## Maintenir le package
 
-[![](https://r-pkgs.org/diagrams/workflow.png){fig-align="center" width="568"}](https://r-pkgs.org/)
+[![](https://r-pkgs.org/diagrams/workflow.png)](https://r-pkgs.org/)
 
 Après avoir ajouté de nouvelles fonctionnalités, il est essentiel de tester le package en utilisant `load_all` et `check()`. Ensuite, on peut ajouter une documentation détaillée avec `document` pour guider les utilisateurs sur l'utilisation du package. Pour mettre à jour le package, on peut aussi actualiser le dépôt GitHub ou reconstruire le package avec `build`. On peut également utiliser `usethis` pour créer des notes de version et effectuer des mises à jour mineures ou majeures. Les possibilités de création, personnalisation, modification, test et maintenance d'un package sur R sont pratiquement infinies. Cet aperçu a résumé les fonctionnalités essentielles pour bien démarrer, mais je vous recommande de consulter la [documentation officielle](https://r-pkgs.org/code.html) pour plus de détails.
