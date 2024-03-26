@@ -1,3 +1,5 @@
+# Le notebook peut être visualisé en cliquant [ici](https://htmlpreview.github.io/?https://github.com/HTilki/TutoCreationPackageR/blob/main/TutoCreationPackageR.html) ! 
+
 ## Introduction
 
 ### Pourquoi créer un package ?
