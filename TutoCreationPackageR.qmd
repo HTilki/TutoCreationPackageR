@@ -91,13 +91,13 @@ Avant de commencer à créer un package, assurez-vous d'avoir installé les pack
 
 L'initialisation d'un package sur R est une étape cruciale pour commencer un projet de développement. Pour ce faire, on peut utiliser une série de fonctions facilitant la création et la configuration de la structure du package. 
 
-Tout d'abord, on peut utiliser la fonction `create_package()` pour créer un dossier dédié au package. Ce dossier comprendra un sous-dossier "R" contenant les fichiers de code, ainsi qu'un fichier "DESCRIPTION" contenant les métadonnées importantes du package.
+Tout d'abord, on peut utiliser la fonction `usethis::create_package()` pour créer un dossier dédié au package. Ce dossier comprendra un sous-dossier "R" contenant les fichiers de code, ainsi qu'un fichier "DESCRIPTION" contenant les métadonnées importantes du package.
 
-Ensuite, pour une gestion de version efficace et une collaboration simplifiée, on peut initialiser un dépôt GitHub en utilisant la fonction `use_git()`. Cela permettra de versionner le code et de le partager facilement avec d'autres personnes.
+Ensuite, pour une gestion de version efficace et une collaboration simplifiée, on peut initialiser un dépôt GitHub en utilisant la fonction `usethis::use_git()`. Cela permettra de versionner le code et de le partager facilement avec d'autres personnes.
 
-Pour assurer une clarté et une accessibilité maximales pour les utilisateurs du package, on peut générer un fichier README prérempli en utilisant la fonction `use_readme_md()`. Ce fichier README servira de point d'entrée pour les utilisateurs, leur fournissant des informations importantes sur l'installation, l'utilisation et les fonctionnalités du package.
+Pour assurer une clarté et une accessibilité maximales pour les utilisateurs du package, on peut générer un fichier README prérempli en utilisant la fonction `usethis::use_readme_md()`. Ce fichier README servira de point d'entrée pour les utilisateurs, leur fournissant des informations importantes sur l'installation, l'utilisation et les fonctionnalités du package.
 
-Enfin, pour définir la licence de votre package, on peut utiliser la fonction `use_..._license()`. Cela garantira une utilisation appropriée du code par d'autres utilisateurs.
+Enfin, pour définir la licence de votre package, on peut utiliser la fonction `usethis::use_..._license()`. Cela garantira une utilisation appropriée du code par d'autres utilisateurs.
 
 En utilisant ces fonctions d'initialisation, on peut rapidement mettre en place la structure du package R et commencer le développement en toute confiance.
 
@@ -131,7 +131,7 @@ Cette méthode, bien qu'utile dans certains cas, ne possède pas les avantages d
 
 D'ailleurs en parlant de documentation, comment la renseigne t-on ?
 
-Pour documenter une fonction, on peut utiliser la syntaxe Roxygen2 dans le code source de la fonction. Voici un exemple de documentation pour la fonction `produit` :
+Pour documenter une fonction, on peut utiliser la syntaxe Roxygen2 dans le code source de la fonction. Voici un exemple de documentation pour la fonction `produit()` :
 
 ```{r}
 #' Calculer le produit de deux nombres
@@ -172,7 +172,7 @@ Ces fonctions analysent les commentaires de documentation Roxygen2 présents dan
 
 ### Les tests de fonctions
 
-Avant de rédiger des tests, on peut utiliser les fonctions du package sans les importer dans l'environnement global à l'aide de la fonction `load_all`.
+Avant de rédiger des tests, on peut utiliser les fonctions du package sans les importer dans l'environnement global à l'aide de la fonction `devtools::load_all()`.
 
 On peut tester nos fonctions à l'aide du package testthat qui est très bien construit et documenté !
 
@@ -190,7 +190,7 @@ testthat::test_that(desc = "multiplication fonctionne",
 
 Une fois que l'on a fini d'écrire le test, on peut vérifier qu'il fonctionne bien en le testant !
 
-Pour ce faire, la fonction `test()` exécute tous les tests situés dans le dossier tests/testthat. Toute modification apportée au code doit être suivie de l'exécution de `test()` pour s'assurer que l'on ne casse pas les fonctionnalités existantes.
+Pour ce faire, la fonction `devtools::test()` exécute tous les tests situés dans le dossier tests/testthat. Toute modification apportée au code doit être suivie de l'exécution de `devtools::test()` pour s'assurer que l'on ne casse pas les fonctionnalités existantes.
 
 ### Inclure une base de données
 
@@ -232,12 +232,12 @@ Une fois la documentation renseignée, on peut à nouveau et de la même manièr
 
 ### La description du package
 
-La section "DESCRIPTION" dans un package R est cruciale car elle fournit des informations essentielles sur le package, telles que son nom, sa version, son auteur et sa licence. Le fichier DESCRIPTION est l'endroit où ces informations sont stockées. En utilisant des fonctions telles que `edit_file("DESCRIPTION")`, vous pouvez facilement créer ou modifier ce fichier. Il est également recommandé d'utiliser des fonctions telles que `use_package()` pour ajouter des dépendances et `use_author()` pour spécifier les informations sur l'auteur. En résumé, le fichier DESCRIPTION et les fonctions associées sont essentiels pour maintenir la structure et la qualité du package.
+La section "DESCRIPTION" dans un package R est cruciale car elle fournit des informations essentielles sur le package, telles que son nom, sa version, son auteur et sa licence. Le fichier DESCRIPTION est l'endroit où ces informations sont stockées. En utilisant des fonctions telles que `usethis::edit_file("DESCRIPTION")`, vous pouvez facilement créer ou modifier ce fichier. Il est également recommandé d'utiliser des fonctions telles que `usethis::use_package()` pour ajouter des dépendances et `usethis::use_author()` pour spécifier les informations sur l'auteur. En résumé, le fichier DESCRIPTION et les fonctions associées sont essentiels pour maintenir la structure et la qualité du package.
 
 ```{r}
-edit_file("DESCRIPTION") # Pour créer ou modifier le fichier DESCRIPTION
-use_package("dplyr", type = "Imports") # Pour ajouter des dépendances
-use_author(
+usethis::edit_file("DESCRIPTION") # Pour créer ou modifier le fichier DESCRIPTION
+usethis::use_package("dplyr", type = "Imports") # Pour ajouter des dépendances
+usethis::use_author(
   given = "Prénom",
   family = "Nom",
   role = c("aut", "cre"),
@@ -247,7 +247,7 @@ use_author(
 
 ## Exporter le package
 
-Après avoir effectué des vérifications avec `check()` et confirmé l'absence de warnings ou d'erreurs, l'utilisation de `devtools::build()` est nécessaire pour construire et exporter le package dans un fichier tar.gz. De plus, il existe d'autre option pour le déploiement du package. On peut en effet les déployer sur le CRAN, ou sur Github.
+Après avoir effectué des vérifications avec `devtools::check()` et confirmé l'absence de warnings ou d'erreurs, l'utilisation de `devtools::build()` est nécessaire pour construire et exporter le package dans un fichier tar.gz. De plus, il existe d'autre option pour le déploiement du package. On peut en effet les déployer sur le CRAN, ou sur Github.
 
 ## Utiliser le package
 
@@ -259,5 +259,5 @@ Pour l'utiliser ensuite, on peut soit l'importer avec `library('nomdupackage')` 
 
 [![](https://r-pkgs.org/diagrams/workflow.png){fig-align="center" width="568"}](https://r-pkgs.org/)
 
-Après avoir ajouté de nouvelles fonctionnalités, il est essentiel de tester le package en utilisant `load_all` et `check()`. Ensuite, on peut ajouter une documentation détaillée avec `document` pour guider les utilisateurs sur l'utilisation du package. Pour mettre à jour le package, on peut aussi actualiser le dépôt GitHub ou reconstruire le package avec `build`. On peut également utiliser `usethis` pour créer des notes de version et effectuer des mises à jour mineures ou majeures. Les possibilités de création, personnalisation, modification, test et maintenance d'un package sur R sont pratiquement infinies. Cet aperçu a résumé les fonctionnalités essentielles pour bien démarrer, mais je vous recommande de consulter la [documentation officielle](https://r-pkgs.org/code.html) pour plus de détails.
+Après avoir ajouté de nouvelles fonctionnalités, il est essentiel de tester le package en utilisant `devtools::load_all()` et `devtools::check()`. Ensuite, on peut ajouter une documentation détaillée avec `document()` pour guider les utilisateurs sur l'utilisation du package. Pour mettre à jour le package, on peut aussi actualiser le dépôt GitHub ou reconstruire le package avec `devtools::build()`. On peut également utiliser `usethis` pour créer des notes de version et effectuer des mises à jour mineures ou majeures. Les possibilités de création, personnalisation, modification, test et maintenance d'un package sur R sont pratiquement infinies. Cet aperçu a résumé les fonctionnalités essentielles pour bien démarrer, mais je vous recommande de consulter la [documentation officielle](https://r-pkgs.org/) pour plus de détails.
 
